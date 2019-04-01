@@ -12,13 +12,13 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36'
 }
 
-url = "https://www.psychologytoday.com/us/therapists/alabama"
+url = "https://www.psychologytoday.com/us/therapists/profile-listings/alabama/a"
 results_page = requests.get(url, headers=headers)
 page_html = results_page.text
 soup = BeautifulSoup(page_html, "html.parser")
 
 
-all_labels = soup.find_all("div", attrs = {'class':'col-4 col-sm-4 col-md-2 col-lg-2 photo-column'})
+all_labels = soup.find_all("div", attrs = {'class':'col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2'})
 for a_div in all_labels:
     # print('------------')
     # print(a_div.text)
