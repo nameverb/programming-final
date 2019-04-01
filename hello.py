@@ -1,3 +1,0 @@
-import sleep
-
-print('hello')
