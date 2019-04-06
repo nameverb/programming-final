@@ -17,6 +17,7 @@ results_page = requests.get(url, headers=headers)
 page_html = results_page.text
 soup = BeautifulSoup(page_html, "html.parser")
 
+
 all_labels = soup.find_all("div", attrs = {'class':'listing-profile'})
 for a_div in all_labels:
     # print('------------')
