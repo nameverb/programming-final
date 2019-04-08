@@ -4,6 +4,7 @@ import requests
 import json
 import collections
 import time
+import re
 pp = pprint.PrettyPrinter(indent=4)
 
 all_my_data = []
@@ -12,7 +13,8 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36'
 }
 
-url = "https://www.psychologytoday.com/us/therapists/profile-listings/alabama/a"
+therapist_alpha = re.compile(".")
+url = "https://www.psychologytoday.com/us/therapists/profile-listings/alabama/ + therapist_alpha"
 results_page = requests.get(url, headers=headers)
 page_html = results_page.text
 soup = BeautifulSoup(page_html, "html.parser")
@@ -24,7 +26,7 @@ for a_div in all_labels:
     # print(a_div.text)
 
     alink = a_div.find('a')
-    abs_url = alink['href'].split("?")[0]
+    abs_url = alink['href']
     # print(abs_url)
 
     headers = {
