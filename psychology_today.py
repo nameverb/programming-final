@@ -13,7 +13,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36'
 }
 
-therapist_alpha = re.compile(".")
+therapist_alpha = re.compile("[a-z]")
 url = "https://www.psychologytoday.com/us/therapists/profile-listings/alabama/ + therapist_alpha"
 results_page = requests.get(url, headers=headers)
 page_html = results_page.text
@@ -46,5 +46,5 @@ for a_div in all_labels:
     alabama_address["url"] = abs_url
     all_my_data.append(alabama_address)
     json_file = open('alabama.json','w')
-    json.dump(all_my_data,json_file, indent=4)
+    json.dump(all_my_data,json_file, indent=2)
     json_file.close()
